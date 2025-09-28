@@ -34,3 +34,4 @@ Simplemente abre el archivo `index.html` en tu navegador y ¡listo!
 
 ## 📄 Licencia
 
+Este proyecto está bajo la [Licencia Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).

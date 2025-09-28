@@ -3,20 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de QR</title>
+    <title>Generador de QR Profesional</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Generador de Códigos QR</h1>
-        <p>Pega una URL para crear tu código QR</p>
-        <input type="text" id="urlInput" placeholder="https://ejemplo.com">
-        <button id="generateBtn">Generar QR</button>
-        <div id="qr-container">
-            <div id="qr-code"></div>
-        </div>
-        <a id="downloadBtn" class="hidden">Descargar QR</a>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Generador de QR Profesional</h1>
+            <p>Crea y personaliza tus códigos QR en tiempo real.</p>
+        </header>
+
+        <main class="main-content">
+            <div class="qr-display-area">
+                <div id="qr-code-container">
+                    <div id="qr-code"></div>
+                </div>
+                <a id="downloadBtn" download="codigo-qr.png">Descargar QR</a>
+            </div>
+
+            <div class="controls-area">
+                <div class="control-group">
+                    <label for="text-input">Texto o URL</label>
+                    <textarea id="text-input" placeholder="Escribe aquí para generar tu QR..."></textarea>
+                </div>
+
+                <div class="control-group">
+                    <label for="size-slider">Tamaño (<span id="size-value">256</span>px)</label>
+                    <input type="range" id="size-slider" min="100" max="500" value="256">
+                </div>
+
+                <div class="control-group color-picker-group">
+                    <div>
+                        <label for="color-dark">Color del QR</label>
+                        <input type="color" id="color-dark" value="#000000">
+                    </div>
+                    <div>
+                        <label for="color-light">Fondo</label>
+                        <input type="color" id="color-light" value="#ffffff">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="error-correction-level">Precisión</label>
+                    <select id="error-correction-level">
+                        <option value="L">Baja (L)</option>
+                        <option value="M" selected>Media (M)</option>
+                        <option value="Q">Alta (Q)</option>
+                        <option value="H">Máxima (H)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="live-update-checkbox">
+                        <input type="checkbox" id="live-update-checkbox" checked>
+                        Actualizar en vivo
+                    </label>
+                </div>
+                <button id="generate-btn" class="hidden">Generar QR</button>
+            </div>
+        </main>
     </div>
     <script src="main.js"></script>
 </body>

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #4a90e2;
+    --background-color: #f4f7f6;
+    --container-bg: #ffffff;
+    --text-color: #333;
+    --placeholder-color: #aaa;
+    --white: #fff;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    background: var(--container-bg);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 25px;
+    color: #666;
+}
+
+#urlInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#urlInput::placeholder {
+    color: var(--placeholder-color);
+}
+
+#urlInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+#generateBtn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#generateBtn:hover {
+    background-color: #357abd;
+}
+
+#generateBtn:active {
+    transform: scale(0.98);
+}
+
+#qr-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px; /* Adjust as needed */
+}
+
+#qr-code {
+    padding: 10px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: inline-block;
+}
+
+#qr-code img {
+    display: block;
+}
+
+#downloadBtn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#downloadBtn:hover {
+    background-color: #218838;
+}
+
+#downloadBtn:active {
+    transform: scale(0.98);
+}
+
+.hidden {
+    display: none !important;
+}

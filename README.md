@@ -2,8 +2,7 @@
 
 ¡Hola! Este es un pequeño pero potente generador de códigos QR creado con JavaScript puro. La idea era hacer una herramienta web rápida, bonita y fácil de usar que permitiera personalizar los códigos QR al vuelo.
 
-![Generador de QR en acción](https://i.imgur.com/YOUR_SCREENSHOT.png)  
-*(Te recomiendo reemplazar esta imagen con una captura de tu generador)*
+![Generador de QR en acción](https://i.postimg.cc/rpD42jhQ/Screenshot-20250928-130750.png)
 
 ## ✨ Características
 

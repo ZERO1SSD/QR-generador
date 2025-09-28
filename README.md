@@ -1,3 +1,6 @@
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-green)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+
 # Generador de Códigos QR Dinámico
 
 ¡Hola! Este es un pequeño pero potente generador de códigos QR creado con JavaScript puro. La idea era hacer una herramienta web rápida, bonita y fácil de usar que permitiera personalizar los códigos QR al vuelo.

